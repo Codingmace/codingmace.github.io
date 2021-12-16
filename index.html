@@ -1,7 +1,105 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-</body>
+  <head>
+    <title>Jquery Fontselect Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/fontselect-default.css" />
+    <script src="jquery.fontselect.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./styles/fontselect-alternate.css" />
+    <script src="./jquery.fontselect.js"></script>
+<script src="home.js"></script>
+    <script>
+      $(function(){
+        $('#font').fontselect().change(function(){
+        
+          // replace + signs with spaces for css
+          var font = $(this).val().replace(/\+/g, ' ');
+          
+          // split font into family and weight
+          font = font.split(':');
+          
+          // set family on paragraphs 
+          $('textarea1').css('font-family', font[0]);
+        });
+      });
+    </script>
+<!--
+    <script>
+      $(function(){
+        $('#font').fontselect();
+      });
+    </script>
+-->
+ <!--Internal CSS start-->
+    <style>
+        h1 {
+            padding-top: 40px;
+            padding-bottom: 5px;
+            text-align: center;
+            color: #957dad;
+            font-family: 'Montserrat', sans-serif;
+        }
+	h6 {
+		text-align: center;
+		color: #000000;
+	}
+          
+        section {
+            padding: 5%;
+            padding-top: 0;
+            height: 100vh;
+        }
+          
+        .side {
+            margin-left: 0;
+        }
+          
+        button {
+            margin: 10px;
+            border-color: #957dad !important;
+            color: #888888 !important;
+            margin-bottom: 25px;
+        }
+          
+        button:hover {
+            background-color: #fec8d8 !important;
+        }
+          
+        textarea {
+            padding: 3%;
+            border-color: #957dad;
+            border-width: thick;
+        }
+          
+        .flex-box {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+  </head>
+
+  <body>
+	<h1>The Daily News </h1>
+	<h6>(Especially Not a Journal)</h6>
+    <input id="font" type="text" />
+<br>
+                    <button type="button" 
+                            onclick="f9()" 
+                            class="btn shadow-sm btn-outline-primary side" 
+                            data-toggle="tooltip" 
+                            data-placement="top" 
+                            title="Tooltip on top">
+            Clear Text</button>
+		<div class="flex-box">
+                    <textarea id="textarea1" 
+                              class="input shadow" 
+                              name="name" 
+                              rows="15" 
+                              cols="100"
+                              spellcheck="true"  
+                              placeholder="">
+                    </textarea>
+                </div>
+  </body>
 </html>
